@@ -38,5 +38,4 @@ vim.schedule(function()
   require "mappings"
 end)
 
--- load lsp servers
 

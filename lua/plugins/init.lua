@@ -1,3 +1,4 @@
+-- Testing ne
 return {
 	{
 		"stevearc/conform.nvim",
@@ -27,31 +28,38 @@ return {
 			},
 		},
 	},
-	-- {
-	--   "zbirenbaum/copilot.lua",
-	--   cmd = "Copilot",
-	--   event = "InsertEnter",
-	--   config = function()
-	--     require("copilot").setup({})
-	--   end,
-	-- },
-	-- {
-	--   "zbirenbaum/copilot-cmp",
-	--   config = function ()
-	--     require("copilot_cmp").setup()
-	--   end
-	-- },
 	{
-		"Exafunction/codeium.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-		},
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
 		config = function()
-			print("requiring codeium")
-			require("codeium").setup({})
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
 		end,
-		event = "BufEnter",
+	},
+	{
+		"hrsh7th/nvim-cmp",
+		config = function(_, opts)
+			-- add codeium as source in the first place
+			table.insert(opts.sources, 1, { name = "copilot" })
+			table.insert(opts.sources, 1, { name = "codeium" })
+		end,
+		dependencies = {
+			{
+				"jcdickinson/codeium.nvim",
+				config = function()
+					require("codeium").setup({})
+				end,
+			},
+			{
+				"zbirenbaum/copilot-cmp",
+				config = function()
+					require("copilot_cmp").setup()
+				end,
+			},
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
