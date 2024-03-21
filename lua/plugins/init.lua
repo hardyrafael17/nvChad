@@ -1,5 +1,3 @@
--- create a function that returns 0
---
 return {
 	{
 		"stevearc/conform.nvim",
@@ -22,11 +20,6 @@ return {
 				"javascript",
 				"typescript",
 				"tsx",
-
-				-- -- low level
-				-- "c",
-				-- "zig",
-        -- create a
 			},
 		},
 	},
@@ -43,15 +36,19 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		config = function(_, opts)
+		config = function()
 			-- add codeium as source in the first place
 			local cmp = require("cmp")
-			local config = require "nvchad.configs.cmp"
+			local config = require("nvchad.configs.cmp")
 			table.insert(config.sources, {
-				name = "codeium", priority = 1001, max_item_count = 3
+				name = "codeium",
+				priority = 1001,
+				max_item_count = 3,
 			})
 			table.insert(config.sources, {
-				name = "copilot", priority = 1000, max_item_count = 3
+				name = "copilot",
+				priority = 1000,
+				max_item_count = 3,
 			})
 			cmp.setup(config)
 		end,
@@ -86,4 +83,11 @@ return {
 			},
 		},
 	},
+	{
+		"Exafunction/codeium.vim",
+		config = function()
+		end,
+    event = "bufEnter"
+	},
 }
+

@@ -1,7 +1,6 @@
 local M = {}
 
 M.ui = {
-  theme = "onedark",
   -- hl_add = {},
   -- hl_override = {},
   -- changed_themes = {},
