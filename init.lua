@@ -1,4 +1,6 @@
+package.path = package.path .. ";~/.luarocks.share/lua/5.1/?/init.lua;"
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
+
 vim.g.mapleader = " "
 
 -- bootstrap lazy and all plugins
@@ -39,3 +41,29 @@ vim.schedule(function()
 end)
 
 
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+
+local ok, comments = pcall(require, "Comment")
+if not ok then
+  print "error loading comments plugin"
+else
+  comments.setup({
+   pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+  })
+end
+
+-- vim.treesitter.language.register("markdown", "mdx")
