@@ -58,6 +58,14 @@ return {
         "html-lsp",
         "prettier",
         "stylua",
+        "qmlls",
+        "lemminx",
+        "tailwindcss",
+        "html",
+        "cssls",
+        "clangd",
+        "tsserver",
+        "eslint",
       },
     },
   },
@@ -113,15 +121,17 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+  -- QML
+  {
+    "peterhoeg/vim-qml",
+    ft = { "qml" },
+  event = "BufRead",
+  },
+  -- Qmake
+  {
+    "artoj/qmake-syntax-vim",
+    ft = { "qmake" },
+  },{
+},
 
-  -- -- install with yarn or npm
-  -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  --   build = "cd app && yarn install",
-  --   init = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --   end,
-  --   ft = { "markdown" },
-  -- },
 }

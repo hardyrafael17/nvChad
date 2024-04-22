@@ -67,3 +67,9 @@ else
 end
 
 -- vim.treesitter.language.register("markdown", "mdx")
+vim.cmd('autocmd BufNewFile,BufRead *.qml set filetype=qml')
+vim.filetype.add({
+  extension = {
+    qrc = "xml",
+  },
+})

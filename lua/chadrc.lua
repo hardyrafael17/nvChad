@@ -4,8 +4,8 @@ M.ui = {
   -- hl_add = {},
   -- hl_override = {},
   -- changed_themes = {},
-  -- theme_toggle = { "onedark", "one_light" },
-  theme = "onedark", -- default theme
+  -- theme_toggle = { "ayu_dark", "one_light" },
+  theme = "ayu_dark", -- default theme
   -- transparency = false,
   --
   cmp = {

@@ -6,7 +6,7 @@ local options = {
     lua = { "stylua" },
     typescript = { "prettierd" },
     json = { "prettierd" },
-    ["*"] = { "prettierd" },
+    ["*"] = { "prettier" },
   },
 }
 
